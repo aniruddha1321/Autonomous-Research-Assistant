@@ -108,7 +108,7 @@ class Paper:
 ### **APIs Used**
 - **ArXiv API**: Free access, 3 requests/second limit
 - **PubMed E-utilities**: Free access, 3 requests/second limit  
-- **Semantic Scholar API**: Citation data (optional)
+- **Semantic Scholar API**: Citation data
 
 ### **Data Storage**
 - **Format**: CSV for compatibility
@@ -124,13 +124,13 @@ class Paper:
 
 ## 📋 Todo / Roadmap
 
-- [ ] **IEEE Xplore Integration**: Add engineering literature
-- [ ] **Google Scholar API**: Enhanced citation data
-- [ ] **PDF Download**: Automatic paper downloads
-- [ ] **NLP Analysis**: Topic modeling and summarization
-- [ ] **Web Interface**: GUI for easier interaction
-- [ ] **Database Migration**: SQLite for better performance
-- [ ] **Citation Networks**: Author and paper relationships
+- **IEEE Xplore Integration**: Add engineering literature
+- **Google Scholar API**: Enhanced citation data
+- **PDF Download**: Automatic paper downloads
+- **NLP Analysis**: Topic modeling and summarization
+- **Web Interface**: GUI for easier interaction
+- **Database Migration**: SQLite for better performance
+- **Citation Networks**: Author and paper relationships
 
 ## 🐛 Known Issues
 
@@ -138,23 +138,9 @@ class Paper:
 - Citation data depends on external API availability
 - Some PubMed papers may lack abstracts
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **ArXiv**: For providing free access to research papers
 - **PubMed/NCBI**: For biomedical literature access
 - **Semantic Scholar**: For citation data
 - **Python Community**: For excellent libraries and tools
-
-## 📞 Contact
-
-**Aniruddha** - [@aniruddha1321](https://github.com/aniruddha1321)
-
-Project Link: [https://github.com/aniruddha1321/Autonomous-Research-Assistant](https://github.com/aniruddha1321/Autonomous-Research-Assistant)
-
----
-
-⭐ **Star this repository if it helped your research!** ⭐
