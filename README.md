@@ -1,146 +1,160 @@
-# 🤖 Autonomous Research Assistant
+# Athena - AI Research Assistant 🧠
 
-An intelligent research assistant that automatically searches, retrieves, and organizes academic papers from multiple sources including ArXiv and PubMed. Built for researchers, students, and academics who need efficient literature surveys and paper management.
+A powerful local AI-powered research assistant for analyzing academic papers, generating summaries, and answering questions.
 
-## 🌟 Features
+## Project Structure
 
-### 📚 **Multi-Source Paper Retrieval**
-- **ArXiv Integration**: Access to computer science, physics, and mathematics papers
-- **PubMed Integration**: Biomedical and life sciences literature
-- **Unified Search Interface**: Search across multiple databases simultaneously
-
-### 🎯 **Advanced Search Capabilities**
-- **Intelligent Ranking**: Citation-based or relevance-based sorting
-- **Date Filtering**: Search papers from specific years (default: 2021+)
-- **Spell Check**: Automatic correction for common research terms
-- **Flexible Result Limits**: Customizable number of papers per source
-
-### 💾 **Smart Storage & Management**
-- **CSV-Based Storage**: Persistent paper storage with deduplication
-- **Search History**: Automatic logging of search queries
-- **Local Database**: Search previously retrieved papers
-- **Export Options**: Easy data export for analysis
-
-### 🔍 **Interactive Workflow**
-1. **Query Input**: Natural language search queries
-2. **Source Selection**: Choose ArXiv, PubMed, or both
-3. **Date Filtering**: Specify publication year range
-4. **Result Configuration**: Set number of papers per source
-5. **Display Options**: View abstracts and detailed metadata
-
-## 🚀 Quick Start
-
-### Prerequisites
-```bash
-pip install arxiv requests python-dateutil
 ```
+Athena/
+├── app.py                      # Main Streamlit application
+├── LICENSE                     # MIT License
+│
+├── src/                        # Core source code modules
+│   ├── __init__.py
+│   ├── advanced_rag.py         # Multi-document RAG implementation
+│   ├── arxiv_search.py         # ArXiv paper search functionality
+│   ├── chat_engine.py          # Conversational AI interface
+│   ├── document_comparison.py  # Document comparison module
+│   ├── kg_visualizer.py        # Knowledge graph visualization
+│   ├── knowledge_graph.py      # Knowledge graph construction
+│   ├── paper_fetcher.py        # Research paper fetching
+│   ├── pdf_utils.py            # PDF processing utilities
+│   ├── qa_engine.py            # Question-answering system
+│   ├── semantic_search.py      # Semantic search implementation
+│   ├── voice_engine.py         # Voice processing
+│   ├── voice_interface.py      # Voice UI
+│   └── web_search.py           # Web search functionality
+│
+├── tests/                      # Test files and debugging scripts
+│   ├── check_setup.py
+│   ├── debug_semantic_search.py
+│   ├── demo_research.py
+│   ├── ollama_debug.py
+│   ├── test_comparison.py
+│   ├── test_kg_rag_system.py
+│   ├── test_pdf_cleaning.py
+│   ├── test_system.py
+│   └── test_voice.py
+│
+├── docs/                       # Documentation
+│   ├── README.md               # Main documentation
+│   ├── CHANGELOG.md            # Version history
+│   ├── installation.md         # Installation guide
+│   ├── RESEARCH_DOCUMENTATION.md  # Academic paper
+│   ├── bug_report.md           # Bug report template
+│   └── feature_request.md      # Feature request template
+│
+├── config/                     # Configuration files
+│   ├── DockerFile              # Docker configuration
+│   ├── docker-compose.yml      # Docker Compose setup
+│   ├── .dockerignore
+│   ├── requirements.txt        # Python dependencies
+│   └── requirements_kg_rag.txt # Optional KG/RAG dependencies
+│
+├── scripts/                    # Setup and utility scripts
+│   ├── setup.bat               # Windows setup
+│   ├── setup.sh                # Linux/Mac setup
+│   ├── setup_kg_rag.bat        # KG/RAG setup (Windows)
+│   ├── setup_kg_rag.sh         # KG/RAG setup (Linux/Mac)
+│   ├── setup_voice.bat         # Voice setup (Windows)
+│   ├── setup_voice.sh          # Voice setup (Linux/Mac)
+│   └── MakeFile                # Make commands
+│
+├── assets/                     # Static assets
+│   ├── athena.png              # Application logo
+│   ├── knowledge_graph.html    # KG visualization template
+│   └── test_*.mp3/wav          # Test audio files
+│
+└── .github/                    # GitHub configurations
+    ├── ci.yml                  # CI/CD workflow
+    ├── release.yml             # Release workflow
+    ├── pre-commit-config.yaml
+    └── pull-request-template.md
+```
+
+## Quick Start
 
 ### Installation
+
+1. **Install dependencies:**
+   ```bash
+   # Windows
+   scripts\setup.bat
+   
+   # Linux/Mac
+   bash scripts/setup.sh
+   ```
+
+2. **Install Ollama and pull model:**
+   ```bash
+   # Download from: https://ollama.ai/
+   ollama pull llama3.2:1b
+   ```
+
+3. **Run the application:**
+   ```bash
+   streamlit run app.py
+   ```
+
+### Optional Features
+
+**Knowledge Graphs & Advanced RAG:**
 ```bash
-git clone https://github.com/aniruddha1321/Autonomous-Research-Assistant.git
-cd Autonomous-Research-Assistant
+# Windows
+scripts\setup_kg_rag.bat
+
+# Linux/Mac
+bash scripts/setup_kg_rag.sh
 ```
 
-### Usage
+**Voice Interface:**
 ```bash
-python main.py
+# Windows
+scripts\setup_voice.bat
+
+# Linux/Mac
+bash scripts/setup_voice.sh
 ```
 
-## 📖 Usage Examples
+## Features
 
-### Basic Search
-```
-Enter your search query: machine learning
-Select sources: 3 (Both ArXiv and PubMed)
-Search papers from year: 2022
-Number of papers per source: 10
-```
+- 📄 **Research & Summarize** - Upload PDFs or search topics for AI-generated summaries
+- 💬 **Smart Q&A** - Ask questions about your documents with context-aware answers
+- 🔍 **Semantic Search** - Find concepts using AI-powered understanding
+- 🤖 **Chat Interface** - Natural conversations about research topics
+- 🕸️ **Knowledge Graphs** - Visualize relationships between concepts (optional)
+- 📚 **Advanced RAG** - Query across multiple documents (optional)
+- 📑 **Document Comparison** - Compare papers side-by-side (optional)
+- 🎤 **Voice Interface** - Voice-enabled interaction (optional)
 
-## 📁 Project Structure
+## Requirements
 
-```
-Autonomous-Research-Assistant/
-├── main.py                 # Main application interface
-├── arxiv_retriever.py      # ArXiv API integration
-├── pubmed_retriever.py     # PubMed API integration  
-├── paper_storage.py        # CSV storage management
-├── retrieved_papers.csv    # Paper database (auto-generated)
-├── search_log.txt         # Search history (auto-generated)
-└── README.md              # This file
-```
+- Python 3.9+
+- 8GB RAM (minimum)
+- Ollama installed and running
+- 5GB free disk space
 
-## 🔧 Core Components
+## Documentation
 
-### 📄 **Paper Data Structure**
-```python
-@dataclass
-class Paper:
-    title: str
-    authors: List[str] 
-    abstract: str
-    published: str
-    url: str
-    paper_id: str
-    source: str
-    citation_count: int = 0
-```
+- Full documentation: `docs/README.md`
+- Installation guide: `docs/installation.md`
+- Research paper: `docs/RESEARCH_DOCUMENTATION.md`
 
-### 🔍 **ArXiv Retriever**
-- Citation-based ranking using Semantic Scholar API
-- Date filtering with ArXiv query syntax
-- Relevance and citation sorting options
-- Rate limiting and error handling
+## License
 
-### 🏥 **PubMed Retriever**
-- NCBI E-utilities API integration
-- Biomedical literature access
-- XML parsing and metadata extraction
-- Date filtering support
+MIT License - see LICENSE file
 
-### 💾 **Paper Storage**
-- CSV-based persistent storage
-- Automatic deduplication
-- Keyword search functionality
-- Export and analysis capabilities
+## Contributing
 
-## 🛠️ Technical Details
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-### **APIs Used**
-- **ArXiv API**: Free access, 3 requests/second limit
-- **PubMed E-utilities**: Free access, 3 requests/second limit  
-- **Semantic Scholar API**: Citation data
+## Support
 
-### **Data Storage**
-- **Format**: CSV for compatibility
-- **Deduplication**: Based on paper ID and source
-- **Persistence**: Local file storage
-- **Search**: Keyword matching across titles/abstracts
+- Report bugs: `docs/bug_report.md`
+- Request features: `docs/feature_request.md`
+- GitHub Issues: https://github.com/aniruddha1321/Athena/issues
 
-### **Performance**
-- **Rate Limiting**: Respects API guidelines
-- **Caching**: Stores results locally
-- **Error Handling**: Graceful failure recovery
-- **Memory Efficient**: Streaming data processing
-
-## 📋 Todo / Roadmap
-
-- **IEEE Xplore Integration**: Add engineering literature
-- **Google Scholar API**: Enhanced citation data
-- **PDF Download**: Automatic paper downloads
-- **NLP Analysis**: Topic modeling and summarization
-- **Web Interface**: GUI for easier interaction
-- **Database Migration**: SQLite for better performance
-- **Citation Networks**: Author and paper relationships
-
-## 🐛 Known Issues
-
-- Rate limiting may slow large searches
-- Citation data depends on external API availability
-- Some PubMed papers may lack abstracts
-
-## 🙏 Acknowledgments
-
-- **ArXiv**: For providing free access to research papers
-- **PubMed/NCBI**: For biomedical literature access
-- **Semantic Scholar**: For citation data
-- **Python Community**: For excellent libraries and tools
+---

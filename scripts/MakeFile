@@ -1,0 +1,61 @@
+# Makefile - Common Commands
+
+.PHONY: help install test lint format clean run docker-build docker-run
+
+help:  ## Show this help message
+	@echo "Available commands:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+install:  ## Install dependencies
+	pip install --upgrade pip
+	pip install -r requirements.txt
+	pip install -r requirements_optional.txt
+	pip install -r requirements_dev.txt
+
+install-dev:  ## Install development dependencies
+	pip install -r requirements_dev.txt
+	pre-commit install
+
+test:  ## Run tests
+	pytest tests/ -v --cov=. --cov-report=html --cov-report=term
+
+test-quick:  ## Run quick tests (no coverage)
+	pytest tests/ -v
+
+lint:  ## Run linters
+	flake8 .
+	black --check .
+	isort --check-only .
+	mypy .
+
+format:  ## Format code
+	black .
+	isort .
+
+clean:  ## Clean temporary files
+	find . -type d -name __pycache__ -exec rm -rf {} +
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "*.egg-info" -exec rm -rf {} +
+	rm -rf build dist htmlcov .pytest_cache .coverage
+
+verify:  ## Verify installation
+	python check_setup.py
+
+run:  ## Run Athena
+	streamlit run app.py
+
+docker-build:  ## Build Docker image
+	docker-compose build
+
+docker-run:  ## Run Docker containers
+	docker-compose up -d
+
+docker-stop:  ## Stop Docker containers
+	docker-compose down
+
+docker-logs:  ## View Docker logs
+	docker-compose logs -f
+
+setup:  ## Run setup script
+	chmod +x setup.sh
+	./setup.sh

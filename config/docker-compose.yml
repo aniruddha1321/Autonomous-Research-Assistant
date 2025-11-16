@@ -1,0 +1,42 @@
+# docker-compose.yml - Docker Compose Configuration
+
+version: '3.8'
+
+services:
+  athena:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: athena-app
+    ports:
+      - "8501:8501"
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+      - MODEL_NAME=llama3
+    volumes:
+      - ./data:/app/data
+      - ./cache:/app/.cache
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: athena-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  ollama-data:
+
+---

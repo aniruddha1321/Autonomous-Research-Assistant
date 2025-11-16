@@ -1,0 +1,338 @@
+# ============================================================
+# requirements.txt - Core Dependencies
+# ============================================================
+
+# Core Framework
+streamlit>=1.30.0
+
+# PDF Processing
+PyPDF2>=3.0.0
+
+# LangChain Core (with pinned compatible versions)
+langchain>=0.1.0,<0.3.0
+langchain-core>=0.1.0,<0.3.0
+langchain-community>=0.0.10,<0.3.0
+
+# Vector Store & Embeddings
+faiss-cpu>=1.7.4,<2.0.0
+sentence-transformers>=2.2.0,<3.0.0
+
+# Text Processing
+tiktoken>=0.5.0,<1.0.0
+
+# Web Search Tools
+duckduckgo-search>=6.0.0
+arxiv>=2.0.0,<3.0.0
+
+# API Requests
+requests>=2.31.0,<3.0.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Utilities
+numpy>=1.24.0,<2.0.0
+
+# ============================================================
+# requirements_optional.txt - Optional Features
+# ============================================================
+
+# Knowledge Graph & Advanced RAG
+networkx>=3.0,<4.0.0
+plotly>=5.14.0,<6.0.0
+pyvis>=0.3.2,<1.0.0
+scikit-learn>=1.3.0,<2.0.0
+
+# Voice Interface (Optional)
+openai-whisper>=20231117
+gtts>=2.5.0,<3.0.0
+soundfile>=0.12.0,<1.0.0
+
+# Alternative: faster-whisper (no FFmpeg needed, Windows-friendly)
+# faster-whisper>=0.10.0
+
+# Enhanced PDF Processing (Optional)
+# pdfplumber>=0.10.0
+# PyMuPDF>=1.23.0
+
+# ============================================================
+# requirements_dev.txt - Development Dependencies
+# ============================================================
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Code Quality
+black>=23.7.0
+flake8>=6.1.0
+isort>=5.12.0
+mypy>=1.5.0
+
+# Documentation
+sphinx>=7.1.0
+sphinx-rtd-theme>=1.3.0
+
+# Pre-commit Hooks
+pre-commit>=3.3.0
+
+# Type Stubs
+types-requests>=2.31.0
+
+# ============================================================
+# .python-version - Python Version Specification
+# ============================================================
+
+3.8.0
+
+# ============================================================
+# runtime.txt - For Deployment (Heroku, etc.)
+# ============================================================
+
+python-3.10.12
+
+# ============================================================
+# MANIFEST.in - Package Manifest
+# ============================================================
+
+include README.md
+include LICENSE
+include requirements.txt
+include requirements_optional.txt
+recursive-include docs *.md
+recursive-include tools *.py
+recursive-include tests *.py
+global-exclude __pycache__
+global-exclude *.py[co]
+
+# ============================================================
+# pyproject.toml - Modern Python Project Configuration
+# ============================================================
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "athena-research"
+version = "1.0.0"
+description = "Local AI research assistant powered by Ollama and LangChain"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["ai", "research", "nlp", "llm", "ollama", "langchain", "knowledge-graph", "rag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+dependencies = [
+    "streamlit>=1.30.0",
+    "PyPDF2>=3.0.0",
+    "langchain>=0.1.0,<0.3.0",
+    "langchain-core>=0.1.0,<0.3.0",
+    "langchain-community>=0.0.10,<0.3.0",
+    "faiss-cpu>=1.7.4,<2.0.0",
+    "sentence-transformers>=2.2.0,<3.0.0",
+    "tiktoken>=0.5.0,<1.0.0",
+    "duckduckgo-search>=6.0.0",
+    "arxiv>=2.0.0,<3.0.0",
+    "requests>=2.31.0,<3.0.0",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.24.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+advanced = [
+    "networkx>=3.0,<4.0.0",
+    "plotly>=5.14.0,<6.0.0",
+    "pyvis>=0.3.2,<1.0.0",
+    "scikit-learn>=1.3.0,<2.0.0",
+]
+
+voice = [
+    "openai-whisper>=20231117",
+    "gtts>=2.5.0,<3.0.0",
+    "soundfile>=0.12.0,<1.0.0",
+]
+
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.7.0",
+    "flake8>=6.1.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+]
+
+all = [
+    "athena-research[advanced,voice,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/athena"
+Documentation = "https://github.com/yourusername/athena/docs"
+Repository = "https://github.com/yourusername/athena"
+"Bug Tracker" = "https://github.com/yourusername/athena/issues"
+
+[project.scripts]
+athena = "app:main"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --cov=. --cov-report=html --cov-report=term"
+
+# ============================================================
+# .env.example - Environment Variables Template
+# ============================================================
+
+# Ollama Configuration
+OLLAMA_URL=http://localhost:11434
+MODEL_NAME=llama3
+
+# Chunking Configuration
+CHUNK_SIZE=2000
+CHUNK_OVERLAP=200
+
+# Search Configuration
+MAX_SEARCH_RESULTS=5
+SEMANTIC_SEARCH_K=10
+
+# Performance
+ENABLE_CACHE=true
+CACHE_DIR=.cache
+
+# Optional: API Keys (if using cloud services)
+# OPENAI_API_KEY=your_openai_key_here
+# ANTHROPIC_API_KEY=your_anthropic_key_here
+
+# ============================================================
+# .gitignore - Git Ignore File
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Athena Specific
+.cache/
+*.mp3
+*.wav
+knowledge_graph.html
+chat_history.txt
+test_*.mp3
+test_*.wav
+
+# Temporary Files
+*.tmp
+temp_*/
+
+# Environment Variables
+.env
+
+# Streamlit
+.streamlit/
+
+# Models (don't commit large model files)
+*.bin
+*.pt
+*.pth
+models/
+
+# Data
+*.pdf
+data/
+uploads/
+
+# Logs
+*.log
+logs/
+
+# Test Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Documentation Build
+docs/_build/
+docs/_static/
+docs/_templates/
