@@ -1,4 +1,4 @@
-# Athena - AI Research Assistant 🧠
+# Athena - AI Research Assistant
 
 A powerful local AI-powered research assistant for analyzing academic papers, generating summaries, and answering questions.
 
@@ -117,44 +117,24 @@ bash scripts/setup_voice.sh
 ```
 
 ## Features
-
-- 📄 **Research & Summarize** - Upload PDFs or search topics for AI-generated summaries
-- 💬 **Smart Q&A** - Ask questions about your documents with context-aware answers
-- 🔍 **Semantic Search** - Find concepts using AI-powered understanding
-- 🤖 **Chat Interface** - Natural conversations about research topics
-- 🕸️ **Knowledge Graphs** - Visualize relationships between concepts (optional)
-- 📚 **Advanced RAG** - Query across multiple documents (optional)
-- 📑 **Document Comparison** - Compare papers side-by-side (optional)
-- 🎤 **Voice Interface** - Voice-enabled interaction (optional)
+-**Research & Summarize** - Upload PDFs or search topics for AI-generated summaries
+-**Smart Q&A** - Ask questions about your documents with context-aware answers
+-**Semantic Search** - Find concepts using AI-powered understanding
+-**Chat Interface** - Natural conversations about research topics
+-**Knowledge Graphs** - Visualize relationships between concepts (optional)
+-**Advanced RAG** - Query across multiple documents (optional)
+-**Document Comparison** - Compare papers side-by-side (optional)
+-**Voice Interface** - Voice-enabled interaction (optional)
 
 ## Requirements
-
 - Python 3.9+
 - 8GB RAM (minimum)
 - Ollama installed and running
 - 5GB free disk space
 
-## Documentation
-
-- Full documentation: `docs/README.md`
-- Installation guide: `docs/installation.md`
-- Research paper: `docs/RESEARCH_DOCUMENTATION.md`
-
 ## License
-
 MIT License - see LICENSE file
 
-## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## Support
-
-- Report bugs: `docs/bug_report.md`
-- Request features: `docs/feature_request.md`
-- GitHub Issues: https://github.com/aniruddha1321/Athena/issues
 
 ---
